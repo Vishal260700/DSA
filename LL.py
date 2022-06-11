@@ -15,3 +15,36 @@ def zigzag(self, head_node):
         Flag = not Flag
         currNode = currNode.next
     return head_node
+
+"""
+Function to remove duplicates from sorted linked list.
+"""
+def removeDuplicates(head): 
+    curr = head
+    while(curr.next):
+        if(curr.data == curr.next.data):
+            curr.next = curr.next.next
+        else:
+            curr = curr.next
+    return head
+
+"""
+get nth node from end of LL
+LOGIC :- single loop method, 2 pointers, let one reach till N then move both together
+"""
+def getNthFromLast(head,n):
+    
+    slow = head
+    fast = head
+    while(n):
+        # not possible n > len(LL)
+        if(fast is None):
+            return -1
+        fast = fast.next
+        n -= 1
+    
+    while(fast):
+        slow = slow.next
+        fast = fast.next
+    
+    return slow.data
